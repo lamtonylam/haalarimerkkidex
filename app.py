@@ -21,3 +21,24 @@ import routes
 def page_not_found(e):
     response = requests.get("https://http.cat/images/404.jpg")
     return send_file(BytesIO(response.content), mimetype="image/jpeg")
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return (
+        """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="3">
+        <title>Internal Server Error</title>
+    </head>
+    <body>
+        <h1>500 Internal Server Error</h1>
+        <p>This is likely due to the server being asleep. The page will refresh in 3 seconds and the server should wake up.</p>
+    </body>
+    </html>
+    """,
+        500,
+    )
