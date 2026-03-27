@@ -2,5 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "schedule": "* 4 * * *",
+  "vulnerabilityAlerts": {
+    "enabled": true
+  }
 }
